@@ -131,7 +131,7 @@ static char *translate_alpha(unsigned char chr)
     static const struct trtab {
         unsigned char code;
         char *str;
-    } trtab[] = {{  0, "<NUL>" },
+    } trtab[] = {{  0, "" },
                  {  1, "<SOH>" },
                  {  2, "<STX>" },
                  {  3, "<ETX>" },
@@ -162,33 +162,7 @@ static char *translate_alpha(unsigned char chr)
                  { 28, "<FS>" },
                  { 29, "<GS>" },
                  { 30, "<RS>" },
-                 { 31, "<US>" },
-             #ifdef CHARSET_LATIN1
-                 { 0x5b, "\304" }, /* upper case A dieresis */
-                 { 0x5c, "\326" }, /* upper case O dieresis */
-                 { 0x5d, "\334" }, /* upper case U dieresis */
-                 { 0x7b, "\344" }, /* lower case a dieresis */
-                 { 0x7c, "\366" }, /* lower case o dieresis */
-                 { 0x7d, "\374" }, /* lower case u dieresis */
-                 { 0x7e, "\337" }, /* sharp s */
-             #elif defined CHARSET_UTF8
-                 { 0x5b, "Ä" }, /* upper case A dieresis */
-                 { 0x5c, "Ö" }, /* upper case O dieresis */
-                 { 0x5d, "Ü" }, /* upper case U dieresis */
-                 { 0x7b, "ä" }, /* lower case a dieresis */
-                 { 0x7c, "ö" }, /* lower case o dieresis */
-                 { 0x7d, "ü" }, /* lower case u dieresis */
-                 { 0x7e, "ß" }, /* sharp s */
-             #else
-                 { 0x5b, "AE" }, /* upper case A dieresis */
-                 { 0x5c, "OE" }, /* upper case O dieresis */
-                 { 0x5d, "UE" }, /* upper case U dieresis */
-                 { 0x7b, "ae" }, /* lower case a dieresis */
-                 { 0x7c, "oe" }, /* lower case o dieresis */
-                 { 0x7d, "ue" }, /* lower case u dieresis */
-                 { 0x7e, "ss" }, /* sharp s */
-             #endif
-                 { 127, "<DEL>" }};
+                 { 31, "<US>" }};
 
     int min = 0, max = (sizeof(trtab) / sizeof(trtab[0])) - 1;
 
